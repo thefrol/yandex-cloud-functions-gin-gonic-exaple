@@ -20,7 +20,7 @@ func MyHandler(c *gin.Context) {
 func MyHandler2(c *gin.Context) {
 	//user := c.Params.ByName("name")
 
-	c.JSON(http.StatusOK, gin.H{"user": "stuff", "value": "sucker"})
+	c.JSON(http.StatusOK, gin.H{"user": "stuff", "value": "its working"})
 }
 
 func Handler(w http.ResponseWriter, r *http.Request) {
