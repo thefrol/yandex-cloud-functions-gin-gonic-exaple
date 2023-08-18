@@ -7,6 +7,17 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+var router *gin.Engine
+
+func init() {
+	//router inits here, so newer call
+	//to cloud function would use this global value
+	//and wont create router again
+	router = gin.Default()
+	router.GET("/", MyHandler)
+	router.GET("/stuff", MyHandler2)
+}
+
 func main() {
 
 }
@@ -26,10 +37,5 @@ func MyHandler2(c *gin.Context) {
 func Handler(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Println(*r)
-	router := gin.Default()
-	router.GET("/", MyHandler)
-	router.GET("/stuff", MyHandler2)
-	//router.Run()
-
 	router.ServeHTTP(w, r) // ServeHTTP conforms to the http.Handler interface (https://godoc.org/github.com/gin-gonic/gin#Engine.ServeHTTP)
 }
