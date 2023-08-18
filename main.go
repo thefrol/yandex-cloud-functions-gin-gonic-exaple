@@ -19,7 +19,11 @@ func init() {
 }
 
 func main() {
-
+	//used for runnig localy
+	//can test your api
+	//go run .
+	//then open http://localhost:8080 in your browser
+	router.Run()
 }
 
 func MyHandler(c *gin.Context) {
