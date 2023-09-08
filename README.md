@@ -47,23 +47,25 @@ $ curl curl --data "{\"name\":\"dima\"}" "http://localhost:8080/stuff"
 
 Он считает, что `/stuff/23` это часть id функции. Много раз меня останавливала эта часть, но решение проблемы есть - достаточно создать `Api Gateway` в том же каталоге, с вот такой спецификацией
 
-    openapi: 3.0.0
-    info:
-    title: Sample API
-    version: 1.0.0
-    paths:
-    /{url+}:
-        x-yc-apigateway-any-method:
-        parameters:
-        - explode: false
-            in: path
-            name: url
-            required: false
-            style: simple
-        x-yc-apigateway-integration:
-            function_id: d4e....
-            tag: $latest
-            type: cloud_functions
+```swagger
+openapi: 3.0.0
+info:
+  title: Sample API
+  version: 1.0.0
+paths:
+  /{url+}:
+    x-yc-apigateway-any-method:
+      parameters:
+      - explode: false
+        in: path
+        name: url
+        required: false
+        style: simple
+      x-yc-apigateway-integration:
+        function_id: d4ebpjlgj00sqsg8g2n4
+        tag: $latest
+        type: cloud_functions
+```
 
 важные параметры:
 + `function_id: <id функции>` - тут нужно указать айди функции
